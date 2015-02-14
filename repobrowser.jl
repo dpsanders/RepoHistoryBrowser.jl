@@ -29,10 +29,10 @@ function browse_repo(directory::String, filename::String)
         html(commits[n]) + generate_html(directory, hashes[n], filename)
     end
 
-
 end
 
-
+# browse in the current directory if no directory given
+browse_repo(filename::String) = browse_repo(pwd(), filename)
 
 
 
