@@ -1,4 +1,9 @@
 # Only works from within IJulia, since uses widgets
+
+module RepoBrowser
+
+export browse_repo
+
 using Interact
 
 
@@ -34,5 +39,4 @@ end
 # browse in the current directory if no directory given
 browse_repo(filename::String) = browse_repo(pwd(), filename)
 
-
-
+end
