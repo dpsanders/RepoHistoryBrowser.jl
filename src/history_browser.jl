@@ -1,6 +1,6 @@
 # Only works from within IJulia, since uses widgets
 
-module HistoryBrowser
+module RepoHistoryBrowser
 
 export browse_history
 
