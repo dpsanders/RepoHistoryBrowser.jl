@@ -35,6 +35,7 @@ end
 # Main function: browse the history of a file in a git repo in the given directory
 
 function browse_history(directory::String, filename::String)
+    commits = []
 
     try
         commits = reverse(readlines(`git -C $directory log --oneline`))
