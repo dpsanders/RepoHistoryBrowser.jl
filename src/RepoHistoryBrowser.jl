@@ -17,7 +17,11 @@ using Interact
 
 # Get the copy of a filename from a particular commit with a given hash, in the given directory
 function use_commit(directory::String, hash::String, filename::String)
-    run(`git -C $directory show $hash:$filename` |> "_tmp.jl")  # pipe output to a temporary file
+    try
+        run(`git -C $directory show $hash:$filename` |> "_tmp.jl")  # pipe output to a temporary file
+    catch
+        run(`echo "No file $filename in commit $hash"` |> "_tmp.jl" )
+    end
 end
 
 # Use pygments to make the highlighted HTML version:
@@ -31,11 +35,17 @@ end
 # Main function: browse the history of a file in a git repo in the given directory
 
 function browse_history(directory::String, filename::String)
-    commits = reverse(readlines(`git -C $directory log --oneline`))
+
+    try
+        commits = reverse(readlines(`git -C $directory log --oneline`))
+    catch
+        error("Not possible to get the history for $directory. Is it a git repository?")
+    end
+
     hashes = ASCIIString[split(commit)[1] for commit in commits];
 
     @manipulate for n in 1:length(hashes)
-        html(commits[n]) + generate_html(directory, hashes[n], filename)
+        html(commits[n]) + html("<p>") + generate_html(directory, hashes[n], filename)
     end
 
 end
