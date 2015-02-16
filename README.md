@@ -4,7 +4,7 @@ Julia package for interactively browsing through the history of a file in a git 
 
 ## Installation
 
-    julia> Pkg.clone("https://github.com/dpsanders/RepoHistoryBrowser.jl.git")
+    julia> Pkg.clone("https://github.com/dpsanders/RepoHistoryBrowser.jl")
 
 ### Required pacakges
 
