@@ -6,7 +6,7 @@ Julia package for interactively browsing through the history of a file in a git 
 
     julia> Pkg.clone("https://github.com/dpsanders/RepoHistoryBrowser.jl")
 
-### Required pacakges
+### Required packages
 
 - Python:
     - `pygments` package  (including the `pygmentize` command-line utility)
